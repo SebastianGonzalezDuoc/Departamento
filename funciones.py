@@ -137,43 +137,10 @@ ganancias=0                 #INICIO GANANCIAS EN 0 para ir sumando las compras d
 def comprar_departamento():
     piso=validar_piso()      #_Validacion piso
     depto=validar_depto()    #_Validacion depto
-    if edificio[piso-1,ord(depto)-65] is None: #Si es None
-        precio=validar_precio(piso) #Validamos precio y dara el valor
-        pago=validar_pago(precio) #Validamos pago y pedimos el pago
-
-        global ganancias #Variable global
-        ganancias+=precio #Actualizamos las ganancias
-
-        rut=validar_rut()  #validamos que el rut sea correcto
-        nombre=validar_nombre() #validamos el nombre que sea correcto 
-
-        edificio[piso-1,ord(depto)-65] = { #Guardamos datos: Nombre ,rut , precio , pago
-            "nombre": nombre,
-            "rut": rut,
-            "precio": precio,
-            "pago": pago}
-        printv("Muchas gracias por su compra!!")
-        dueños[rut] = {     #Guardamos en diccionario dueños la ID de rut (y sus datos)
-            "nombre": nombre,
-            "piso": piso,
-            "depto": depto}
-    else:
-        printr("El departamento ya fue vendido")
-          
+    pass
 
 def buscar_dueño(): #Buscar dueño
-    rut=validar_rut() #validamos rut
-    if rut in dueños: # si el rut esta en dueño
-        dueño=dueños[rut] #sacamos quien es
-        nombre=dueño["nombre"] #obtenemos el nombre
-        printv(f"El nombre del dueño es:{nombre}") # se muestra
-        printam("Departamentos asociados al rut:") # los departamentos asociados
-        for piso in range(10,0,-1): #Recorremos el edificio por piso
-            for depto in range(4):# y depto
-                if edificio[piso - 1, depto] is not None and edificio[piso - 1, depto]["rut"] == rut:
-                    print(f"Piso: {piso} Depto: {chr(depto + 65)}")
-    else:
-        printr("No se encontró ningún dueño con ese rut")
+    pass
 
 def total_ganancias():
     printv(f"Total de ganancias:${ganancias}")
